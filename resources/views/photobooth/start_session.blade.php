@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Mulai Sesi Foto - MeetinFrame')
+@section('title', __('Mulai Sesi Foto') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -227,8 +227,8 @@
 
     <div id="choice-menu">
         <div class="choice-header">
-            <h2>Mulai Sesi Foto</h2>
-            <p>Pilih metode masukan! Ingin mengambil foto secara langsung atau mengunggah foto yang sudah ada?</p>
+            <h2>{{ __('Mulai Sesi Foto') }}</h2>
+            <p>{{ __('Pilih metode masukan! Ingin mengambil foto secara langsung atau mengunggah foto yang sudah ada?') }}</p>
         </div>
         
         <div class="choice-grid">
@@ -236,22 +236,22 @@
                 <div class="icon-circle-neo">
                     <i class="bi bi-camera-fill"></i>
                 </div>
-                <div class="choice-title">Gunakan Kamera</div>
-                <div class="choice-desc">Ambil foto Anda secara langsung menggunakan webcam atau kamera perangkat. Sangat interaktif!</div>
+                <div class="choice-title">{{ __('Gunakan Kamera') }}</div>
+                <div class="choice-desc">{{ __('Ambil foto Anda secara langsung menggunakan webcam atau kamera perangkat. Sangat interaktif!') }}</div>
             </div>
 
             <div class="choice-card-neo" id="choose-upload">
                 <div class="icon-circle-neo">
                     <i class="bi bi-cloud-arrow-up-fill"></i>
                 </div>
-                <div class="choice-title">Unggah File</div>
-                <div class="choice-desc">Gunakan foto terbaik Anda yang sudah tersedia di galeri perangkat.</div>
+                <div class="choice-title">{{ __('Unggah File') }}</div>
+                <div class="choice-desc">{{ __('Gunakan foto terbaik Anda yang sudah tersedia di galeri perangkat.') }}</div>
             </div>
         </div>
         
         <div style="margin-top: 60px;">
             <a href="{{ route('select.option') }}" class="link-back-neo">
-                <i class="bi bi-arrow-left" style="font-size: 1.3rem;"></i> Kembali ke Pilihan Frame
+                <i class="bi bi-arrow-left" style="font-size: 1.3rem;"></i> {{ __('Kembali ke Pilihan Frame') }}
             </a>
         </div>
     </div>
@@ -260,10 +260,10 @@
         
         <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
             <button id="back-to-menu-from-camera" class="link-back-neo" style="background:none; cursor:pointer;">
-                <i class="bi bi-arrow-left" style="font-size: 1.2rem;"></i> KEMBALI
+                <i class="bi bi-arrow-left" style="font-size: 1.2rem;"></i> {{ __('KEMBALI') }}
             </button>
             <span style="font-family: 'Uncut Sans', sans-serif; font-weight: 800; color: var(--dark); font-size: 1.5rem; text-transform: uppercase;">
-                Studio <span style="color: var(--hot-pink);">Aktif</span>
+                {{ __('Studio') }} <span style="color: var(--hot-pink);">{{ __('Aktif') }}</span>
             </span>
             <div style="width: 100px;"></div> 
         </div>
@@ -281,25 +281,25 @@
                 <div id="upload-preview-wrap" style="display:none; background: #ffeaa7;">
                     <div style="text-align: center; color: var(--dark);">
                         <i class="bi bi-images" style="font-size: 5rem; margin-bottom: 15px; display: block;"></i>
-                        <h3 style="font-weight: 800; text-transform: uppercase;">Mode Unggah</h3>
-                        <span style="font-size: 1rem; font-weight: 600;">Silakan isi slot foto Anda melalui panel di sebelah kanan.</span>
+                        <h3 style="font-weight: 800; text-transform: uppercase;">{{ __('Mode Unggah') }}</h3>
+                        <span style="font-size: 1rem; font-weight: 600;">{{ __('Silakan isi slot foto Anda melalui panel di sebelah kanan.') }}</span>
                     </div>
                 </div>
 
                 <div id="camera-controls" class="controls-bar">
-                    <button id="switch-camera" class="btn-ctrl" title="Ganti Kamera">
+                    <button id="switch-camera" class="btn-ctrl" title="{{ __('Ganti Kamera') }}">
                         <i class="bi bi-arrow-repeat"></i>
                     </button>
                     
                     <button id="start-shooting" class="btn-shutter-main">
-                        <i class="bi bi-camera-fill"></i> Mulai Memotret!
+                        <i class="bi bi-camera-fill"></i> {{ __('Mulai Memotret!') }}
                     </button>
                     
-                    <button id="single-capture" class="btn-ctrl" title="Ambil 1 Foto">
+                    <button id="single-capture" class="btn-ctrl" title="{{ __('Ambil 1 Foto') }}">
                         <i class="bi bi-record-circle"></i>
                     </button>
 
-                    <button id="mirror-toggle" class="btn-ctrl" title="Mirror">
+                    <button id="mirror-toggle" class="btn-ctrl" title="{{ __('Mirror') }}">
                         <i class="bi bi-symmetry-vertical"></i>
                     </button>
                 </div>
@@ -308,17 +308,17 @@
             <div class="panel-neo sidebar-panel">
 
                 <div class="panel-section">
-                    <div class="section-label">Waktu Timer</div>
+                    <div class="section-label">{{ __('Waktu Timer') }}</div>
                     <div class="filter-wrap">
-                        <button class="filter-btn active" data-timer="3">3 Dtk</button>
-                        <button class="filter-btn" data-timer="5">5 Dtk</button>
-                        <button class="filter-btn" data-timer="10">10 Dtk</button>
+                        <button class="filter-btn active" data-timer="3">{{ __('3 Dtk') }}</button>
+                        <button class="filter-btn" data-timer="5">{{ __('5 Dtk') }}</button>
+                        <button class="filter-btn" data-timer="10">{{ __('10 Dtk') }}</button>
                     </div>
                 </div>
                 
                 <div class="panel-section">
                     <div class="section-label">
-                        <span>Slot Foto Terisi</span>
+                        <span>{{ __('Slot Foto Terisi') }}</span>
                         <span id="progress-text" style="color: var(--hot-pink);">0 / {{ $poseCount ?? 3 }}</span>
                     </div>
                     <div class="progress-track">
@@ -327,44 +327,44 @@
                 </div>
 
                 <div class="panel-section">
-                    <div class="section-label">Filter Lensa</div>
+                    <div class="section-label">{{ __('Filter Lensa') }}</div>
                     <div class="filter-wrap">
-                        <button class="filter-btn active" data-filter="none">Ori</button>
-                        <button class="filter-btn" data-filter="bw">B&W</button>
-                        <button class="filter-btn" data-filter="sepia">Klasik</button>
-                        <button class="filter-btn" data-filter="soft">Cerah</button>
+                        <button class="filter-btn active" data-filter="none">{{ __('Ori') }}</button>
+                        <button class="filter-btn" data-filter="bw">{{ __('B&W') }}</button>
+                        <button class="filter-btn" data-filter="sepia">{{ __('Klasik') }}</button>
+                        <button class="filter-btn" data-filter="soft">{{ __('Cerah') }}</button>
                     </div>
                 </div>
 
                 <div class="panel-section">
-                    <div class="section-label">Preview Hasil</div>
+                    <div class="section-label">{{ __('Preview Hasil') }}</div>
                     <div id="pose-container" class="thumbs-container"></div>
                     <div id="thumbs" style="display:none;"></div> 
                 </div>
 
                 <div id="upload-section" class="panel-section" style="display:none;">
-                    <div class="section-label">Pilih Foto Anda</div>
+                    <div class="section-label">{{ __('Pilih Foto Anda') }}</div>
                     <div id="upload-slots" style="display:flex; flex-direction:column; gap:12px;"></div>
                     <button id="upload-add-single" class="btn-action-neo btn-secondary-action">
-                        <i class="bi bi-plus-lg"></i> Isi Slot Kosong
+                        <i class="bi bi-plus-lg"></i> {{ __('Isi Slot Kosong') }}
                     </button>
                 </div>
 
                 <div style="margin-top: 15px;">
                     <button id="next-button" class="btn-action-neo btn-next" style="display:none;">
-                        Lanjut Desain Frame <i class="bi bi-arrow-right-circle-fill"></i>
+                        {{ __('Lanjut Desain Frame') }} <i class="bi bi-arrow-right-circle-fill"></i>
                     </button>
                     
                     <button id="upload-submit" class="btn-action-neo btn-next" style="display:none;">
-                        Lanjut Desain Frame <i class="bi bi-stars"></i>
+                        {{ __('Lanjut Desain Frame') }} <i class="bi bi-stars"></i>
                     </button>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
                         <button id="delete-last" class="btn-action-neo btn-secondary-action" style="margin:0;">
-                            <i class="bi bi-arrow-counterclockwise"></i> Batal 1
+                            <i class="bi bi-arrow-counterclockwise"></i> {{ __('Batal 1') }}
                         </button>
                         <button id="reset-shots" class="btn-action-neo btn-danger-action" style="margin:0;">
-                            <i class="bi bi-trash-fill"></i> Ulangi
+                            <i class="bi bi-trash-fill"></i> {{ __('Ulangi') }}
                         </button>
                     </div>
                 </div>
@@ -472,7 +472,7 @@ async function startCamera() {
         video.style.transform = 'scaleX(-1)'; 
         requestAnimationFrame(drawLoop);
     } catch (err) {
-        alert('Gagal mengakses kamera. Pastikan izin telah diberikan.');
+        alert("{{ __('Gagal mengakses kamera. Pastikan izin telah diberikan.') }}");
     }
 }
 
@@ -540,13 +540,13 @@ async function doCountdown(seconds) {
 }
 
 document.getElementById('single-capture').addEventListener('click', async () => {
-    if (capturedPhotos.length >= poseCount) return alert('Slot foto sudah penuh!');
+    if (capturedPhotos.length >= poseCount) return alert("{{ __('Slot foto sudah penuh!') }}");
     await doCountdown(defaultTimer);
     addPhoto(captureNow());
 });
 
 document.getElementById('start-shooting').addEventListener('click', async () => {
-    if (capturedPhotos.length >= poseCount) return alert('Slot foto sudah penuh!');
+    if (capturedPhotos.length >= poseCount) return alert("{{ __('Slot foto sudah penuh!') }}");
     
     while (capturedPhotos.length < poseCount) {
         await doCountdown(defaultTimer);
@@ -615,7 +615,7 @@ document.getElementById('delete-last').addEventListener('click', () => {
 });
 
 document.getElementById('reset-shots').addEventListener('click', () => {
-    if(confirm('Apakah Anda yakin ingin mengulang semua foto?')) {
+    if(confirm("{{ __('Apakah Anda yakin ingin mengulang semua foto?') }}")) {
         capturedPhotos = [];
         updateUI();
     }
@@ -660,7 +660,7 @@ uploadSubmit.addEventListener('click', submitForm);
 if (uploadAddSingle) uploadAddSingle.addEventListener('click', () => {
     const firstEmptyInput = uploadSlots.querySelector('input[type=file]:not([value])');
     if (firstEmptyInput) firstEmptyInput.click();
-    else alert('Semua slot foto Anda sudah terisi!');
+    else alert("{{ __('Semua slot foto Anda sudah terisi!') }}");
 });
 
 });

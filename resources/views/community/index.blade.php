@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Komunitas Kreator - MeetinFrame')
+@section('title', __('Komunitas') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -109,9 +109,9 @@
 <div class="container-community">
     
     <div class="com-header-neo">
-        <span class="com-badge-neo">Global Talent</span>
-        <h2 class="com-title-neo">Komunitas MeetinFrame</h2>
-        <p class="com-desc-neo">Temukan kreator berbakat, jelajahi karya unik, dan dapatkan inspirasi frame terbaik.</p>
+        <span class="com-badge-neo">{{ __('Global Talent') }}</span>
+        <h2 class="com-title-neo">{{ __('Komunitas MeetinFrame') }}</h2>
+        <p class="com-desc-neo">{{ __('Temukan kreator berbakat, jelajahi karya unik, dan dapatkan inspirasi frame terbaik.') }}</p>
     </div>
 
     <div class="creator-grid-neo">
@@ -125,19 +125,19 @@
                 
                 <div class="card-body-neo">
                     <div class="c-name-neo">{{ $creator->name }}</div>
-                    <div class="c-role-neo">Content Creator</div>
+                    <div class="c-role-neo">{{ __('Content Creator') }}</div>
                     
                     <div class="c-stat-box-neo">
-                        <i class="bi bi-grid-fill" style="color: var(--hot-pink);"></i> {{ $creator->templates_count }} Karya
+                        <i class="bi bi-grid-fill" style="color: var(--hot-pink);"></i> {{ $creator->templates_count }} {{ __('Karya') }}
                     </div>
                 </div>
             </a>
         @empty
             <div class="empty-community-neo">
                 <i class="bi bi-people-fill" style="font-size: 4rem; margin-bottom: 15px; display: block; color: var(--dark);"></i>
-                <h3 style="font-family: 'Uncut Sans', sans-serif; font-weight: 800; text-transform: uppercase;">Belum Ada Kreator</h3>
-                <p style="font-weight: 600; color: #555; margin-bottom: 20px;">Belum ada kreator yang bergabung di komunitas ini. Jadilah yang pertama!</p>
-                <a href="{{ route('creator') }}" class="btn-main-neo">Mulai Berkarya <i class="bi bi-stars ms-2"></i></a>
+                <h3 style="font-family: 'Uncut Sans', sans-serif; font-weight: 800; text-transform: uppercase;">{{ __('Belum Ada Kreator') }}</h3>
+                <p style="font-weight: 600; color: #555; margin-bottom: 20px;">{{ __('Belum ada kreator yang bergabung di komunitas ini. Jadilah yang pertama!') }}</p>
+                <a href="{{ route('creator') }}" class="btn-main-neo">{{ __('Mulai Berkarya') }} <i class="bi bi-stars ms-2"></i></a>
             </div>
         @endforelse
     </div>

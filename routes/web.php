@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;    // Ditambahkan untuk fitur bahasa
-use Illuminate\Support\Facades\App;        // Ditambahkan untuk fitur bahasa
-use Illuminate\Support\Facades\Redirect;   // Ditambahkan untuk fitur bahasa
+use Illuminate\Support\Facades\Session;    
+use Illuminate\Support\Facades\App;        
+use Illuminate\Support\Facades\Redirect;   
 use App\Http\Controllers\PhotoboothController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
@@ -25,8 +25,21 @@ Route::get('lang/{locale}', function ($locale) {
 Route::get('/', [PhotoboothController::class, 'index'])->name('home');
 Route::get('/select-option', [PhotoboothController::class, 'selectOption'])->name('select.option');
 Route::post('/upload-photo', [PhotoboothController::class, 'uploadPhoto'])->name('upload.photo');
+
+// --- PENYELAMAT ERROR 405 (GET METHOD) ---
+// Jika user me-refresh atau ganti bahasa di tengah sesi foto, 
+// kembalikan mereka ke halaman pilih frame secara otomatis.
+Route::get('/start-session', function () {
+    return redirect()->route('select.option');
+});
 Route::post('/start-session', [PhotoboothController::class, 'startSession'])->name('start.session');
+
 Route::match(['GET','POST'], '/customize-frame', [PhotoboothController::class, 'customizeFrame'])->name('customize.frame');
+
+// --- PENYELAMAT ERROR 405 (GET METHOD) UNTUK HALAMAN FINISH ---
+Route::get('/finish', function () {
+    return redirect()->route('home');
+});
 Route::post('/finish', [PhotoboothController::class, 'finish'])->name('finish');
 
 // Rute untuk proses upload gambar dari QR Code

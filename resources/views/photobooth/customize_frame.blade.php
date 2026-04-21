@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Finalisasi Foto - MeetinFrame')
+@section('title', __('Finalisasi Foto') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -204,20 +204,20 @@
 
 <div class="qr-modal-overlay" id="qr-modal">
     <div class="qr-modal-box-neo">
-        <h3 class="qr-title">Pindai QR Code</h3>
-        <p class="qr-desc">Pindai QR Code ini menggunakan perangkat Anda untuk mengunduh hasil secara langsung.</p>
+        <h3 class="qr-title">{{ __('Pindai QR Code') }}</h3>
+        <p class="qr-desc">{{ __('Pindai QR Code ini menggunakan perangkat Anda untuk mengunduh hasil secara langsung.') }}</p>
         <div class="qr-code-wrapper" id="qr-code-container"></div>
-        <button class="btn-close-qr" id="btn-close-qr">Tutup</button>
+        <button class="btn-close-qr" id="btn-close-qr">{{ __('Tutup') }}</button>
     </div>
 </div>
 
 <div class="customize-container">
     <div class="page-header-neo">
         <div class="page-badge-neo">
-            <i class="bi bi-stars text-danger"></i> Langkah Terakhir
+            <i class="bi bi-stars text-danger"></i> {{ __('Langkah Terakhir') }}
         </div>
-        <h1 class="page-title-neo">Finalisasi Hasil Foto!</h1>
-        <div class="page-subtitle-neo">Layout: <strong>{{ ucfirst($template) }}</strong> • {{ $poseCount }} Jepretan</div>
+        <h1 class="page-title-neo">{{ __('Finalisasi Hasil Foto!') }}</h1>
+        <div class="page-subtitle-neo">{{ __('Layout:') }} <strong>{{ ucfirst($template) }}</strong> • {{ $poseCount }} {{ __('Jepretan') }}</div>
     </div>
 
     <div class="customize-grid">
@@ -232,11 +232,11 @@
             <div id="customization-controls">
                 <div class="panel-header-neo">
                     <div class="panel-icon-neo"><i class="bi bi-palette-fill"></i></div>
-                    <h3 class="panel-title-neo">Kustomisasi Desain</h3>
+                    <h3 class="panel-title-neo">{{ __('Kustomisasi Desain') }}</h3>
                 </div>
 
                 <div class="option-group">
-                    <span class="group-label">Warna Bingkai</span>
+                    <span class="group-label">{{ __('Warna Bingkai') }}</span>
                     <div class="color-grid" id="frame-color-options">
                         <div class="btn-color active" data-color="#ffffff" style="background:#ffffff;"></div>
                         <div class="btn-color" data-color="#000000" style="background:#000000;"></div>
@@ -249,7 +249,7 @@
                 </div>
 
                 <div class="option-group">
-                    <span class="group-label">Warna Latar Foto</span>
+                    <span class="group-label">{{ __('Warna Latar Foto') }}</span>
                     <div class="color-grid" id="photo-bg-color-options">
                         <div class="btn-color active" data-color="#e0e0e0" style="background:#e0e0e0;"></div> 
                         <div class="btn-color" data-color="#ffffff" style="background:#ffffff;"></div>
@@ -262,37 +262,37 @@
                 </div>
 
                 <div class="option-group">
-                    <span class="group-label">Pilihan Stiker</span>
+                    <span class="group-label">{{ __('Pilihan Stiker') }}</span>
                     <div class="sticker-grid" id="sticker-options">
-                        <button class="btn-sticker active" data-sticker="none">🚫 Polos</button>
-                        <button class="btn-sticker" data-sticker="girlypop">💖 Girly</button>
-                        <button class="btn-sticker" data-sticker="jellycat">🐱 Jelly</button>
-                        <button class="btn-sticker" data-sticker="cute">🌸 Cute</button>
-                        <button class="btn-sticker" data-sticker="mofusand">🐻 Mofu</button>
-                        <button class="btn-sticker" data-sticker="shinchang">🤪 Shin</button>
+                        <button class="btn-sticker active" data-sticker="none">✨ {{ __('Polos') }}</button>
+                        <button class="btn-sticker" data-sticker="girlypop">🎀 {{ __('Girly') }}</button>
+                        <button class="btn-sticker" data-sticker="jellycat">🐈 {{ __('Jelly') }}</button>
+                        <button class="btn-sticker" data-sticker="cute">🐶 {{ __('Cute') }}</button>
+                        <button class="btn-sticker" data-sticker="mofusand">🐱 {{ __('Mofu') }}</button>
+                        <button class="btn-sticker" data-sticker="shinchang">👦 {{ __('Shin') }}</button>
                     </div>
                 </div>
             </div>
 
             <div style="margin-top: 30px;">
                 <button id="download-strip" class="btn-action-neo btn-download">
-                    <i class="bi bi-laptop"></i> Unduh ke Perangkat
+                    <i class="bi bi-laptop"></i> {{ __('Unduh ke Perangkat') }}
                 </button>
                 
                 <button id="btn-show-qr" class="btn-action-neo btn-qr">
-                    <i class="bi bi-qr-code-scan"></i> Pindai dengan HP
+                    <i class="bi bi-qr-code-scan"></i> {{ __('Pindai dengan HP') }}
                 </button>
 
                 <form id="finish-form" action="{{ route('finish') }}" method="POST" style="width: 100%; margin-top: 15px;">
                     @csrf
                     <input type="hidden" name="final_image" id="final-image-input">
                     <button type="submit" class="btn-action-neo btn-finish">
-                        Selesai & Simpan <i class="bi bi-check-circle-fill"></i>
+                        {{ __('Selesai & Simpan') }} <i class="bi bi-check-circle-fill"></i>
                     </button>
                 </form>
 
                 <a href="{{ route('select.option') }}" class="btn-back-text-neo">
-                    <i class="bi bi-arrow-repeat"></i> Ulangi Dari Awal
+                    <i class="bi bi-arrow-repeat"></i> {{ __('Ulangi Dari Awal') }}
                 </a>
             </div>
 
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     btnQr.addEventListener('click', async () => {
         const originalText = btnQr.innerHTML;
-        btnQr.innerHTML = '<i class="bi bi-hourglass-split"></i> Memproses...';
+        btnQr.innerHTML = '<i class="bi bi-hourglass-split"></i> {{ __('Memproses...') }}';
         btnQr.disabled = true;
 
         const dataURL = canvas.toDataURL('image/jpeg', 0.8);
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             qrModal.classList.add('active');
         } catch (error) {
             console.error("Detail Error QR:", error);
-            alert('Gagal membuat QR Code. Silakan coba lagi.');
+            alert("{{ __('Gagal membuat QR Code. Silakan coba lagi.') }}");
         } finally {
             btnQr.innerHTML = originalText;
             btnQr.disabled = false;
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if(controls) controls.classList.add('hidden-panel');
     }
 
-    if (imagesData.length === 0) { alert('Belum ada foto yang dipilih. Silakan kembali ke awal.'); window.location.href = "{{ route('select.option') }}"; return; }
+    if (imagesData.length === 0) { alert("{{ __('Belum ada foto yang dipilih. Silakan kembali ke awal.') }}"); window.location.href = "{{ route('select.option') }}"; return; }
 
     let frameColor = '#ffffff', photoBgColor = '#e0e0e0', selectedSticker = 'none';
 

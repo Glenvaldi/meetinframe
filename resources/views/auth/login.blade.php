@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login - MeetinFrame')
+@section('title', __('Masuk') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -123,8 +123,8 @@
             <div class="brand-icon-neo">
                 <i class="bi bi-camera-fill"></i>
             </div>
-            <h1 class="auth-title">Welcome Back!</h1>
-            <p class="auth-desc">Masuk untuk melanjutkan kreativitasmu.</p>
+            <h1 class="auth-title">{{ __('Welcome Back!') }}</h1>
+            <p class="auth-desc">{{ __('Masuk untuk melanjutkan kreativitasmu.') }}</p>
         </div>
 
         <form method="POST" action="{{ route('login.post') }}">
@@ -138,17 +138,17 @@
             @endif
 
             <div class="form-group">
-                <label for="email" class="form-label">Email Address</label>
+                <label for="email" class="form-label">{{ __('Email Address') }}</label>
                 <div class="input-wrap">
                     <input type="email" class="form-input" id="email" name="email" 
-                           placeholder="nama@email.com" value="{{ old('email') }}" required autofocus>
+                           placeholder="{{ __('nama@email.com') }}" value="{{ old('email') }}" required autofocus>
                     <i class="bi bi-envelope-fill input-icon"></i>
                 </div>
                 @error('email') <small style="color:var(--hot-pink); font-weight:800; margin-top:8px; display:block;">{{ $message }}</small> @enderror
             </div>
 
             <div class="form-group">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">{{ __('Password') }}</label>
                 <div class="input-wrap">
                     <input type="password" class="form-input" id="password" name="password" 
                            placeholder="••••••••" required>
@@ -159,12 +159,12 @@
             </div>
 
             <button type="submit" class="btn-auth-neo">
-                Masuk Sekarang <i class="bi bi-arrow-right-circle-fill"></i>
+                {{ __('Masuk Sekarang') }} <i class="bi bi-arrow-right-circle-fill"></i>
             </button>
         </form>
 
         <div class="auth-footer">
-            Belum punya akun? <a href="{{ route('register') }}" class="link-primary">Daftar Gratis</a>
+            {{ __('Belum punya akun?') }} <a href="{{ route('register') }}" class="link-primary">{{ __('Daftar Gratis') }}</a>
         </div>
     </div>
 </div>

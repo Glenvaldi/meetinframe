@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sesi Selesai - MeetinFrame')
+@section('title', __('Sesi Selesai') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -127,36 +127,36 @@
     
     <div class="finish-header">
         <div class="finish-badge">
-            <i class="bi bi-check-circle-fill text-success"></i> Sesi Selesai
+            <i class="bi bi-check-circle-fill text-success"></i> {{ __('Sesi Selesai') }}
         </div>
         <h1 class="finish-title">
-            Luar Biasa! <br> Momen Terabadikan
+            {!! __('Luar Biasa! <br> Momen Terabadikan') !!}
         </h1>
         <p class="finish-subtitle">
-            Karya Anda telah berhasil disimpan di dalam riwayat. Hasilnya terlihat sangat menarik! Apakah Anda ingin mencoba gaya atau template lainnya?
+            {{ __('Karya Anda telah berhasil disimpan di dalam riwayat. Hasilnya terlihat sangat menarik! Apakah Anda ingin mencoba gaya atau template lainnya?') }}
         </p>
     </div>
 
     <div class="result-card-neo">
-        <img src="{{ request()->input('final_image') ?? session('final_image') ?? asset('images/placeholder-result.png') }}" alt="Hasil Foto" class="result-img" id="final-result-img">
+        <img src="{{ request()->input('final_image') ?? session('final_image') ?? asset('images/placeholder-result.png') }}" alt="{{ __('Hasil Foto') }}" class="result-img" id="final-result-img">
     </div>
 
     <div class="action-stack">
         <button id="btn-download-final" class="btn-action-neo btn-download">
-            <i class="bi bi-download"></i> Unduh Hasil Foto
+            <i class="bi bi-download"></i> {{ __('Unduh Hasil Foto') }}
         </button>
 
         <a href="{{ route('select.option') }}" class="btn-action-neo btn-new-photo">
-            <i class="bi bi-camera-fill"></i> Mulai Sesi Baru
+            <i class="bi bi-camera-fill"></i> {{ __('Mulai Sesi Baru') }}
         </a>
 
         <a href="{{ route('home') }}" class="btn-action-neo btn-home-final">
-            <i class="bi bi-house-door-fill"></i> Kembali ke Beranda
+            <i class="bi bi-house-door-fill"></i> {{ __('Kembali ke Beranda') }}
         </a>
     </div>
 
     <a href="{{ route('creator') }}" class="creator-check-link">
-        Lihat Riwayat Foto di Dashboard <i class="bi bi-arrow-right"></i>
+        {{ __('Lihat Riwayat Foto di Dashboard') }} <i class="bi bi-arrow-right"></i>
     </a>
 
     <div class="finish-visual-neo">
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
             a.click();
             a.remove();
         } else {
-            alert("Sedang memproses gambar, silakan coba lagi.");
+            alert("{{ __('Sedang memproses gambar, silakan coba lagi.') }}");
         }
     });
 });

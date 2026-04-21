@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ($title ?? 'Sesi Couple') . ' - MeetinFrame')
+@section('title', ($title ?? __('Sesi Couple')) . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -201,14 +201,14 @@
     
     <div class="room-header">
         <a href="{{ route('couple.lobby') }}" class="btn-exit-room">
-            <i class="bi bi-box-arrow-left"></i> Keluar
+            <i class="bi bi-box-arrow-left"></i> {{ __('Keluar') }}
         </a>
-        <div class="room-code-box" id="copy-code-btn" style="cursor:pointer;" title="Klik untuk Salin">
-            ROOM: <span id="room-code-text">{{ $room_code }}</span> <i class="bi bi-copy ms-2"></i>
+        <div class="room-code-box" id="copy-code-btn" style="cursor:pointer;" title="{{ __('Klik untuk Salin') }}">
+            {{ __('ROOM:') }} <span id="room-code-text">{{ $room_code }}</span> <i class="bi bi-copy ms-2"></i>
         </div>
         <div class="connection-status">
             <div class="status-dot" id="status-dot"></div>
-            <span id="status-text">Menunggu Rekan...</span>
+            <span id="status-text">{{ __('Menunggu Rekan...') }}</span>
         </div>
     </div>
 
@@ -217,27 +217,27 @@
         <div class="left-column">
             <div class="video-stage" id="main-video-stage">
                 
-                <div id="pose-idea-text">Ide Pose: Ekspresi Lucu! 🤪</div>
+                <div id="pose-idea-text">{{ __('Ide Pose: Ekspresi Lucu! 🤪') }}</div>
 
                 <div class="video-wrapper" id="local-wrapper">
                     <video id="local-video" class="is-mirrored" autoplay playsinline muted></video>
                     <div class="cam-off-overlay" id="local-cam-off">
-                        <i class="bi bi-camera-video-off-fill"></i><span>Kamera Mati</span>
+                        <i class="bi bi-camera-video-off-fill"></i><span>{{ __('Kamera Mati') }}</span>
                     </div>
-                    <div class="video-label"><i class="bi bi-person-fill"></i> Anda</div>
+                    <div class="video-label"><i class="bi bi-person-fill"></i> {{ __('Anda') }}</div>
                     <div class="floating-actions">
-                        <button id="btn-mirror" class="btn-action-float" title="Balik Kamera"><i class="bi bi-symmetry-vertical"></i></button>
-                        <button id="btn-cam" class="btn-action-float" title="Kamera"><i class="bi bi-camera-video-fill"></i></button>
-                        <button id="btn-mic" class="btn-action-float" title="Mikrofon"><i class="bi bi-mic-fill"></i></button>
+                        <button id="btn-mirror" class="btn-action-float" title="{{ __('Balik Kamera') }}"><i class="bi bi-symmetry-vertical"></i></button>
+                        <button id="btn-cam" class="btn-action-float" title="{{ __('Kamera') }}"><i class="bi bi-camera-video-fill"></i></button>
+                        <button id="btn-mic" class="btn-action-float" title="{{ __('Mikrofon') }}"><i class="bi bi-mic-fill"></i></button>
                     </div>
                 </div>
 
                 <div class="video-wrapper" id="remote-wrapper">
                     <video id="remote-video" class="is-mirrored" autoplay playsinline></video>
                     <div class="cam-off-overlay" id="remote-cam-off">
-                        <i class="bi bi-camera-video-off-fill"></i><span>Kamera Mati</span>
+                        <i class="bi bi-camera-video-off-fill"></i><span>{{ __('Kamera Mati') }}</span>
                     </div>
-                    <div class="video-label"><i class="bi bi-people-fill"></i> Rekan</div>
+                    <div class="video-label"><i class="bi bi-people-fill"></i> {{ __('Rekan') }}</div>
                 </div>
 
                 <div id="sync-countdown">3</div>
@@ -245,10 +245,10 @@
 
             <div class="chat-container">
                 <div class="chat-header">
-                    <span><i class="bi bi-chat-dots-fill" style="color: var(--hot-pink);"></i> Obrolan Ruangan</span>
+                    <span><i class="bi bi-chat-dots-fill" style="color: var(--hot-pink);"></i> {{ __('Obrolan Ruangan') }}</span>
                 </div>
                 <div class="chat-messages" id="chat-messages">
-                    <div class="chat-system">Tulis pesan untuk rekan Anda di sini...</div>
+                    <div class="chat-system">{{ __('Tulis pesan untuk rekan Anda di sini...') }}</div>
                 </div>
                 <div class="chat-bottom-wrapper">
                     <div class="emoji-bar">
@@ -258,7 +258,7 @@
                         <button class="emoji-btn" data-emoji="✨">✨</button>
                     </div>
                     <div class="chat-input-wrap">
-                        <input type="text" id="chat-input" placeholder="Ketik pesan Anda..." autocomplete="off">
+                        <input type="text" id="chat-input" placeholder="{{ __('Ketik pesan Anda...') }}" autocomplete="off">
                         <button id="btn-send-chat"><i class="bi bi-send-fill"></i></button>
                     </div>
                 </div>
@@ -268,66 +268,66 @@
         <div class="sidebar-panel">
             
             <div>
-                <div class="section-title">Layout Bingkai</div>
+                <div class="section-title">{{ __('Layout Bingkai') }}</div>
                 <div class="filter-wrap">
-                    <button class="filter-btn layout-btn active" data-layout="split"><i class="bi bi-layout-split"></i> Kiri-Kanan</button>
-                    <button class="filter-btn layout-btn" data-layout="pip-right"><i class="bi bi-pip"></i> PiP Kanan</button>
-                    <button class="filter-btn layout-btn" data-layout="pip-left"><i class="bi bi-pip"></i> PiP Kiri</button>
+                    <button class="filter-btn layout-btn active" data-layout="split"><i class="bi bi-layout-split"></i> {{ __('Kiri-Kanan') }}</button>
+                    <button class="filter-btn layout-btn" data-layout="pip-right"><i class="bi bi-pip"></i> {{ __('PiP Kanan') }}</button>
+                    <button class="filter-btn layout-btn" data-layout="pip-left"><i class="bi bi-pip"></i> {{ __('PiP Kiri') }}</button>
                 </div>
             </div>
 
             <div>
-                <div class="section-title">Virtual Background (AI)</div>
+                <div class="section-title">{{ __('Virtual Background (AI)') }}</div>
                 <div class="filter-wrap">
-                    <button class="filter-btn bg-btn active" data-bg="none">🚫 Transparan</button>
-                    <button class="filter-btn bg-btn" data-bg="neon">🎆 Neon Vibes</button>
-                    <button class="filter-btn bg-btn" data-bg="beach">🏖️ Pantai</button>
+                    <button class="filter-btn bg-btn active" data-bg="none">🚫 {{ __('Transparan') }}</button>
+                    <button class="filter-btn bg-btn" data-bg="neon">🎆 {{ __('Neon Vibes') }}</button>
+                    <button class="filter-btn bg-btn" data-bg="beach">🏖️ {{ __('Pantai') }}</button>
                 </div>
                 <small style="color: #666; font-size: 0.75rem; font-weight: 600; display: block; margin-top: 8px;">
-                    <i class="bi bi-info-circle-fill" style="color: var(--hot-pink);"></i> Efek AI akan diterapkan <b>setelah foto diambil</b>.
+                    <i class="bi bi-info-circle-fill" style="color: var(--hot-pink);"></i> {!! __('Efek AI akan diterapkan <b>setelah foto diambil</b>.') !!}
                 </small>
             </div>
 
             <div>
-                <div class="section-title">Filter Lensa (Sinkron)</div>
+                <div class="section-title">{{ __('Filter Lensa (Sinkron)') }}</div>
                 <div class="filter-wrap">
                     <button class="filter-btn style-btn active" data-filter="none">Ori</button>
                     <button class="filter-btn style-btn" data-filter="bw">B&W</button>
-                    <button class="filter-btn style-btn" data-filter="retro">📺 Retro</button>
-                    <button class="filter-btn style-btn" data-filter="blur">🕶️ Blur</button>
-                    <button class="filter-btn style-btn" data-filter="alien">👽 Alien</button>
-                    <button class="filter-btn style-btn" data-filter="ghost">👻 Ghost</button>
-                    <button class="filter-btn style-btn" data-filter="cyber">🤖 Cyber</button>
-                    <button class="filter-btn style-btn" data-filter="thermal">🔥 Thermal</button>
+                    <button class="filter-btn style-btn" data-filter="retro">📺 {{ __('Retro') }}</button>
+                    <button class="filter-btn style-btn" data-filter="blur">🕶️ {{ __('Blur') }}</button>
+                    <button class="filter-btn style-btn" data-filter="alien">👽 {{ __('Alien') }}</button>
+                    <button class="filter-btn style-btn" data-filter="ghost">👻 {{ __('Ghost') }}</button>
+                    <button class="filter-btn style-btn" data-filter="cyber">🤖 {{ __('Cyber') }}</button>
+                    <button class="filter-btn style-btn" data-filter="thermal">🔥 {{ __('Thermal') }}</button>
                 </div>
             </div>
 
             <div class="action-area">
-                <p style="font-weight: 800; font-size: 1rem; color: var(--dark); margin-bottom: 10px; text-transform: uppercase;">Slot Terisi: <span style="color: var(--hot-pink);" id="pose-count-text">0</span> / {{ $poseCount }}</p>
+                <p style="font-weight: 800; font-size: 1rem; color: var(--dark); margin-bottom: 10px; text-transform: uppercase;">{{ __('Slot Terisi:') }} <span style="color: var(--hot-pink);" id="pose-count-text">0</span> / {{ $poseCount }}</p>
                 
                 <select id="timer-setting" class="custom-timer-select">
-                    <option value="3">⏳ Durasi: 3 Detik</option>
-                    <option value="5">⏳ Durasi: 5 Detik</option>
-                    <option value="10">⏳ Durasi: 10 Detik</option>
+                    <option value="3">⏳ {{ __('Durasi: 3 Detik') }}</option>
+                    <option value="5">⏳ {{ __('Durasi: 5 Detik') }}</option>
+                    <option value="10">⏳ {{ __('Durasi: 10 Detik') }}</option>
                 </select>
 
                 <button id="btn-snap" class="btn-shutter-sync" disabled>
-                    <i class="bi bi-camera-fill"></i> Ambil Foto Bersama!
+                    <i class="bi bi-camera-fill"></i> {{ __('Ambil Foto Bersama!') }}
                 </button>
                 
                 <button id="btn-ide-pose" class="btn-pose-generator">
-                    <i class="bi bi-dice-5-fill"></i> Dapatkan Ide Pose
+                    <i class="bi bi-dice-5-fill"></i> {{ __('Dapatkan Ide Pose') }}
                 </button>
 
-                <div id="ai-loading"><i class="bi bi-cpu-fill"></i> Menerapkan Efek Latar...</div>
+                <div id="ai-loading"><i class="bi bi-cpu-fill"></i> {{ __('Menerapkan Efek Latar...') }}</div>
                 
                 <button id="btn-next" class="btn-next-step" style="display:none;">
-                    Desain Frame <i class="bi bi-arrow-right-circle-fill"></i>
+                    {{ __('Desain Frame') }} <i class="bi bi-arrow-right-circle-fill"></i>
                 </button>
 
                 <div class="btn-undo-group" id="undo-group" style="display:none;">
-                    <button id="btn-undo" class="btn-undo"><i class="bi bi-arrow-counterclockwise"></i> Batalkan</button>
-                    <button id="btn-reset" class="btn-reset"><i class="bi bi-trash-fill"></i> Ulangi Semua</button>
+                    <button id="btn-undo" class="btn-undo"><i class="bi bi-arrow-counterclockwise"></i> {{ __('Batalkan') }}</button>
+                    <button id="btn-reset" class="btn-reset"><i class="bi bi-trash-fill"></i> {{ __('Ulangi Semua') }}</button>
                 </div>
                 
                 <div class="thumbs-container" id="thumbs-container"></div>
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         copyBtn.addEventListener('click', () => {
             const code = document.getElementById('room-code-text').innerText;
             navigator.clipboard.writeText(code);
-            alert("Kode Ruangan berhasil disalin: " + code);
+            alert("{{ __('Kode Ruangan berhasil disalin: ') }}" + code);
         });
     }
 
@@ -425,8 +425,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     function playSfxPop() { if(audioCtx.state === 'suspended') audioCtx.resume(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'sine'; osc.frequency.setValueAtTime(800, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1); osc.start(); osc.stop(audioCtx.currentTime + 0.1); }
     function playSfxShutter() { if(audioCtx.state === 'suspended') audioCtx.resume(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'square'; osc.frequency.setValueAtTime(100, audioCtx.currentTime); gain.gain.setValueAtTime(0.4, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15); osc.start(); osc.stop(audioCtx.currentTime + 0.15); }
 
-    const poseIdeas = ["Saranghae 🫶", "Gaya Peace ✌️", "Ekspresi Lucu! 🤪", "Cubit Pipi Virtual 🤏", "Gaya Elegan 😎", "Pose Bebas!"];
-    function showPose(text) { poseIdeaText.innerText = "Pose: " + text; poseIdeaText.classList.add('show'); clearTimeout(poseTimer); poseTimer = setTimeout(() => { poseIdeaText.classList.remove('show'); }, 4000); }
+    const poseIdeas = [
+        "{{ __('Saranghae 🫶') }}", 
+        "{{ __('Gaya Peace ✌️') }}", 
+        "{{ __('Ekspresi Lucu! 🤪') }}", 
+        "{{ __('Cubit Pipi Virtual 🤏') }}", 
+        "{{ __('Gaya Elegan 😎') }}", 
+        "{{ __('Pose Bebas!') }}"
+    ];
+    function showPose(text) { poseIdeaText.innerText = "{{ __('Pose: ') }}" + text; poseIdeaText.classList.add('show'); clearTimeout(poseTimer); poseTimer = setTimeout(() => { poseIdeaText.classList.remove('show'); }, 4000); }
     btnIdePose.addEventListener('click', () => { const random = poseIdeas[Math.floor(Math.random() * poseIdeas.length)]; showPose(random); if(dataConnection && dataConnection.open) dataConnection.send({ type: 'POSE', text: random }); });
 
     function spawnFlyingEmoji(emojiChar) { const el = document.createElement('div'); el.className = 'flying-emoji'; el.innerText = emojiChar; el.style.left = (Math.random() * 80 + 10) + '%'; document.body.appendChild(el); setTimeout(() => el.remove(), 2500); }
@@ -486,7 +493,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try { localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true }); localVideo.srcObject = localStream; monitorSpeech(localStream, 'local-wrapper'); } 
-    catch (err) { alert("Harap izinkan akses kamera dan mikrofon Anda."); return; }
+    catch (err) { alert("{{ __('Harap izinkan akses kamera dan mikrofon Anda.') }}"); return; }
 
     const hostId = `flashsy_${roomCode}_1`; const guestId = `flashsy_${roomCode}_2`;
     peer = new Peer(hostId);
@@ -495,7 +502,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (err.type === 'unavailable-id') {
             peer.destroy(); peer = new Peer(guestId);
             peer.on('open', () => {
-                statusText.innerText = "Menghubungkan..."; dataConnection = peer.connect(hostId); setupDataConnection(dataConnection);
+                statusText.innerText = "{{ __('Menghubungkan...') }}"; dataConnection = peer.connect(hostId); setupDataConnection(dataConnection);
                 const call = peer.call(hostId, localStream);
                 call.on('stream', (rStream) => { remoteVideo.srcObject = rStream; setConnectedUI(); monitorSpeech(rStream, 'remote-wrapper'); });
             });
@@ -505,8 +512,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     peer.on('connection', (conn) => { dataConnection = conn; setupDataConnection(dataConnection); });
     peer.on('call', (call) => { call.answer(localStream); call.on('stream', (rStream) => { remoteVideo.srcObject = rStream; setConnectedUI(); monitorSpeech(rStream, 'remote-wrapper'); }); });
 
-    function setConnectedUI() { if(audioCtx.state === 'suspended') audioCtx.resume(); statusText.innerText = "Terhubung!"; statusText.style.color = "#00d2d3"; statusDot.classList.remove('disconnected'); statusDot.classList.add('connected'); btnSnap.disabled = false; playSfxPop(); appendSystemChat("🤝 Rekan Anda telah bergabung ke dalam ruangan!"); }
-    function handleDisconnect() { statusText.innerText = "Koneksi Terputus!"; statusText.style.color = "#ff4757"; statusDot.classList.remove('connected'); statusDot.classList.add('disconnected'); btnSnap.disabled = true; remoteVideo.srcObject = null; playSfxPop(); appendSystemChat("⚠️ Rekan Anda meninggalkan ruangan atau koneksi terputus."); }
+    function setConnectedUI() { if(audioCtx.state === 'suspended') audioCtx.resume(); statusText.innerText = "{{ __('Terhubung!') }}"; statusText.style.color = "#00d2d3"; statusDot.classList.remove('disconnected'); statusDot.classList.add('connected'); btnSnap.disabled = false; playSfxPop(); appendSystemChat("{{ __('🤝 Rekan Anda telah bergabung ke dalam ruangan!') }}"); }
+    function handleDisconnect() { statusText.innerText = "{{ __('Koneksi Terputus!') }}"; statusText.style.color = "#ff4757"; statusDot.classList.remove('connected'); statusDot.classList.add('disconnected'); btnSnap.disabled = true; remoteVideo.srcObject = null; playSfxPop(); appendSystemChat("{{ __('⚠️ Rekan Anda meninggalkan ruangan atau koneksi terputus.') }}"); }
 
     function setupDataConnection(conn) {
         conn.on('data', (data) => { 
@@ -557,7 +564,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if(bg !== 'none') {
             const btn = document.querySelector('.bg-btn.active');
             const originalText = btn.innerHTML;
-            btn.innerHTML = "Aktif! (Tampil saat jepret)";
+            btn.innerHTML = "{{ __('Aktif! (Tampil saat jepret)') }}";
             setTimeout(() => { btn.innerHTML = originalText; }, 2000);
         }
     }
@@ -567,7 +574,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function updateThumbsUI() { poseCountText.innerText = capturedImages.length; thumbsContainer.innerHTML = ''; capturedImages.forEach(src => { const thumb = document.createElement('img'); thumb.src = src; thumb.className = 'thumb-item'; thumbsContainer.appendChild(thumb); }); undoGroup.style.display = capturedImages.length > 0 ? 'flex' : 'none'; if (capturedImages.length < maxPoses) { btnSnap.style.display = 'inline-flex'; btnSnap.disabled = (dataConnection && !dataConnection.open); btnNext.style.display = 'none'; } else { btnSnap.style.display = 'none'; btnNext.style.display = 'flex'; } }
     function executeUndo() { capturedImages.pop(); updateThumbsUI(); } function executeReset() { capturedImages = []; updateThumbsUI(); }
     btnUndo.addEventListener('click', () => { executeUndo(); if(dataConnection && dataConnection.open) dataConnection.send({ type: 'UNDO' }); });
-    btnReset.addEventListener('click', () => { if(confirm('Apakah Anda yakin ingin menghapus semua foto?')) { executeReset(); if(dataConnection && dataConnection.open) dataConnection.send({ type: 'RESET' }); } });
+    btnReset.addEventListener('click', () => { if(confirm("{{ __('Apakah Anda yakin ingin menghapus semua foto?') }}")) { executeReset(); if(dataConnection && dataConnection.open) dataConnection.send({ type: 'RESET' }); } });
 
     btnSnap.addEventListener('click', () => { if (capturedImages.length >= maxPoses) return; if(audioCtx.state === 'suspended') audioCtx.resume(); if (dataConnection && dataConnection.open) dataConnection.send({ type: 'START_SNAP' }); runCaptureSequence(); });
 

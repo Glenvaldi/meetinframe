@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Register - MeetinFrame')
+@section('title', __('Buat Akun Baru') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -116,38 +116,38 @@
             <div class="brand-icon-neo">
                 <i class="bi bi-person-plus-fill"></i>
             </div>
-            <h1 class="auth-title">Buat Akun Baru</h1>
-            <p class="auth-desc">Bergabunglah dengan komunitas kreator MeetinFrame.</p>
+            <h1 class="auth-title">{{ __('Buat Akun Baru') }}</h1>
+            <p class="auth-desc">{{ __('Bergabunglah dengan komunitas kreator MeetinFrame.') }}</p>
         </div>
 
         <form method="POST" action="{{ route('register.post') }}">
             @csrf
 
             <div class="form-group">
-                <label class="form-label">Nama Lengkap</label>
+                <label class="form-label">{{ __('Nama Lengkap') }}</label>
                 <div class="input-wrap">
                     <input type="text" class="form-input" name="name" 
-                           placeholder="Contoh: Glenvaldi" value="{{ old('name') }}" required>
+                           placeholder="{{ __('Contoh: Glenvaldi') }}" value="{{ old('name') }}" required>
                     <i class="bi bi-person-fill input-icon"></i>
                 </div>
                 @error('name') <small style="color:var(--hot-pink); font-weight:800; margin-top:8px; display:block;">{{ $message }}</small> @enderror
             </div>
 
             <div class="form-group">
-                <label class="form-label">Email Address</label>
+                <label class="form-label">{{ __('Email Address') }}</label>
                 <div class="input-wrap">
                     <input type="email" class="form-input" name="email" 
-                           placeholder="nama@email.com" value="{{ old('email') }}" required>
+                           placeholder="{{ __('nama@email.com') }}" value="{{ old('email') }}" required>
                     <i class="bi bi-envelope-fill input-icon"></i>
                 </div>
                 @error('email') <small style="color:var(--hot-pink); font-weight:800; margin-top:8px; display:block;">{{ $message }}</small> @enderror
             </div>
 
             <div class="form-group">
-                <label class="form-label">Password</label>
+                <label class="form-label">{{ __('Password') }}</label>
                 <div class="input-wrap">
                     <input type="password" class="form-input" id="password" name="password" 
-                           placeholder="Minimal 8 karakter" required>
+                           placeholder="{{ __('Minimal 8 karakter') }}" required>
                     <i class="bi bi-lock-fill input-icon"></i>
                     <i class="bi bi-eye-slash-fill toggle-eye" onclick="togglePassword('password', this)"></i>
                 </div>
@@ -155,22 +155,22 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">Ulangi Password</label>
+                <label class="form-label">{{ __('Ulangi Password') }}</label>
                 <div class="input-wrap">
                     <input type="password" class="form-input" id="password_confirmation" name="password_confirmation" 
-                           placeholder="Ketik ulang password..." required>
+                           placeholder="{{ __('Ketik ulang password...') }}" required>
                     <i class="bi bi-lock-fill input-icon"></i>
                     <i class="bi bi-eye-slash-fill toggle-eye" onclick="togglePassword('password_confirmation', this)"></i>
                 </div>
             </div>
 
             <button type="submit" class="btn-auth-neo">
-                Daftar Sekarang <i class="bi bi-arrow-right-circle-fill"></i>
+                {{ __('Daftar Sekarang') }} <i class="bi bi-arrow-right-circle-fill"></i>
             </button>
         </form>
 
         <div class="auth-footer">
-            Sudah punya akun? <a href="{{ route('login') }}" class="link-primary">Login di sini</a>
+            {{ __('Sudah punya akun?') }} <a href="{{ route('login') }}" class="link-primary">{{ __('Login di sini') }}</a>
         </div>
     </div>
 </div>

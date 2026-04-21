@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pilih Frame - MeetinFrame')
+@section('title', __('Pilih Gaya Frame') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -289,10 +289,10 @@
 
     <div class="page-header-neo">
         <div class="page-badge-neo">
-            <i class="bi bi-magic text-danger"></i> Langkah 1
+            <i class="bi bi-magic text-danger"></i> {{ __('Langkah 1') }}
         </div>
-        <h1 class="page-title-neo">Pilih Gaya Frame</h1>
-        <p class="page-desc-neo">Tentukan jumlah pose dan gaya frame. Pilih kanvas polos untuk kreasi bebas, atau gunakan template menarik yang sudah tersedia.</p>
+        <h1 class="page-title-neo">{{ __('Pilih Gaya Frame') }}</h1>
+        <p class="page-desc-neo">{{ __('Tentukan jumlah pose dan gaya frame. Pilih kanvas polos untuk kreasi bebas, atau gunakan template menarik yang sudah tersedia.') }}</p>
     </div>
 
     <div class="selection-section theme-custom">
@@ -301,8 +301,8 @@
                 <i class="bi bi-grid-1x2-fill"></i>
             </div>
             <div>
-                <h3 class="section-title-neo">Custom Layout</h3>
-                <span class="section-subtitle-neo">Frame polos, edit stiker dan warna latar sesuai kreativitas Anda.</span>
+                <h3 class="section-title-neo">{{ __('Custom Layout') }}</h3>
+                <span class="section-subtitle-neo">{{ __('Frame polos, edit stiker dan warna latar sesuai kreativitas Anda.') }}</span>
             </div>
         </div>
 
@@ -318,11 +318,11 @@
                     <div class="card-body-neo">
                         <h4 class="card-title-neo">Classic Strip</h4>
                         <div class="card-meta-neo">
-                            <span><i class="bi bi-images"></i> 4 Pose</span>
-                            <span class="badge-price-neo">Gratis</span>
+                            <span><i class="bi bi-images"></i> 4 {{ __('Pose') }}</span>
+                            <span class="badge-price-neo">{{ __('Gratis') }}</span>
                         </div>
                         <button type="submit" name="custom_type" value="Custom A" class="btn-select-neo btn-custom">
-                            Pilih Layout Ini
+                            {{ __('Pilih Layout Ini') }}
                         </button>
                     </div>
                 </div>
@@ -334,11 +334,11 @@
                     <div class="card-body-neo">
                         <h4 class="card-title-neo">Triple Fun</h4>
                         <div class="card-meta-neo">
-                            <span><i class="bi bi-images"></i> 3 Pose</span>
-                            <span class="badge-price-neo">Gratis</span>
+                            <span><i class="bi bi-images"></i> 3 {{ __('Pose') }}</span>
+                            <span class="badge-price-neo">{{ __('Gratis') }}</span>
                         </div>
                         <button type="submit" name="custom_type" value="Custom B" class="btn-select-neo btn-custom">
-                            Pilih Layout Ini
+                            {{ __('Pilih Layout Ini') }}
                         </button>
                     </div>
                 </div>
@@ -350,11 +350,11 @@
                     <div class="card-body-neo">
                         <h4 class="card-title-neo">Duo Shot</h4>
                         <div class="card-meta-neo">
-                            <span><i class="bi bi-images"></i> 2 Pose</span>
-                            <span class="badge-price-neo">Gratis</span>
+                            <span><i class="bi bi-images"></i> 2 {{ __('Pose') }}</span>
+                            <span class="badge-price-neo">{{ __('Gratis') }}</span>
                         </div>
                         <button type="submit" name="custom_type" value="Custom C" class="btn-select-neo btn-custom">
-                            Pilih Layout Ini
+                            {{ __('Pilih Layout Ini') }}
                         </button>
                     </div>
                 </div>
@@ -366,11 +366,11 @@
                     <div class="card-body-neo">
                         <h4 class="card-title-neo">Grid Collage</h4>
                         <div class="card-meta-neo">
-                            <span><i class="bi bi-images"></i> 6 Pose</span>
-                            <span class="badge-price-neo">Gratis</span>
+                            <span><i class="bi bi-images"></i> 6 {{ __('Pose') }}</span>
+                            <span class="badge-price-neo">{{ __('Gratis') }}</span>
                         </div>
                         <button type="submit" name="custom_type" value="Custom D" class="btn-select-neo btn-custom">
-                            Pilih Layout Ini
+                            {{ __('Pilih Layout Ini') }}
                         </button>
                     </div>
                 </div>
@@ -384,8 +384,8 @@
                 <i class="bi bi-stars"></i>
             </div>
             <div>
-                <h3 class="section-title-neo">Official Templates</h3>
-                <span class="section-subtitle-neo">Koleksi desain eksklusif langsung dari MeetinFrame.</span>
+                <h3 class="section-title-neo">{{ __('Official Templates') }}</h3>
+                <span class="section-subtitle-neo">{{ __('Koleksi desain eksklusif langsung dari MeetinFrame.') }}</span>
             </div>
         </div>
 
@@ -411,8 +411,8 @@
                 <div class="card-body-neo">
                     <h4 class="card-title-neo">{{ $t['title'] }}</h4>
                     <div class="card-meta-neo">
-                        <span><i class="bi bi-camera"></i> {{ $t['pose'] }} Pose</span>
-                        <span class="badge-price-neo">Gratis</span>
+                        <span><i class="bi bi-camera"></i> {{ $t['pose'] }} {{ __('Pose') }}</span>
+                        <span class="badge-price-neo">{{ __('Gratis') }}</span>
                     </div>
                     
                     <form action="{{ route('start.session') }}" method="POST" style="width:100%;">
@@ -420,7 +420,7 @@
                         <input type="hidden" name="template" value="{{ $t['name'] }}">
                         <input type="hidden" name="pose_count" value="{{ $t['pose'] }}">
                         <button type="submit" class="btn-select-neo btn-official">
-                            Gunakan Template
+                            {{ __('Gunakan Template') }}
                         </button>
                     </form>
                 </div>
@@ -435,13 +435,15 @@
                 <i class="bi bi-people-fill"></i>
             </div>
             <div>
-                <h3 class="section-title-neo">Community Creations</h3>
-                <span class="section-subtitle-neo">Beragam karya kreatif dari komunitas pengguna.</span>
+                <h3 class="section-title-neo">{{ __('Community Creations') }}</h3>
+                <span class="section-subtitle-neo">{{ __('Beragam karya kreatif dari komunitas pengguna.') }}</span>
             </div>
         </div>
 
         <div class="options-grid">
-            @forelse($creatorTemplates ?? [] as $tmp)
+            @php $templates = $creatorTemplates ?? []; @endphp
+            @forelse($templates as $tmp)
+                @if(is_object($tmp))
                 <div class="option-card-neo">
                     <div class="card-img-box-neo">
                         <div class="creator-tag">
@@ -454,20 +456,20 @@
                         <h4 class="card-title-neo" title="{{ $tmp->name }}">{{ $tmp->name }}</h4>
                         
                         <div style="font-size: 0.95rem; font-weight: 700; color: #555; margin-bottom: 15px;">
-                            Oleh 
-                            @if($tmp->creator)
+                            {{ __('Oleh') }} 
+                            @if(isset($tmp->creator->name))
                                 <a href="{{ route('community.show', $tmp->creator->id) }}" style="color: var(--hot-pink); text-decoration: none;">
                                     {{ $tmp->creator->name }}
                                 </a>
                             @else
-                                Anonim
+                                {{ __('Anonim') }}
                             @endif
                         </div>
                         
                         <div class="card-meta-neo">
-                            <span><i class="bi bi-camera"></i> {{ $tmp->layout_type }} Pose</span>
+                            <span><i class="bi bi-camera"></i> {{ $tmp->layout_type }} {{ __('Pose') }}</span>
                             @if($tmp->price == 0)
-                                <span class="badge-price-neo">Gratis</span>
+                                <span class="badge-price-neo">{{ __('Gratis') }}</span>
                             @else
                                 <span class="badge-price-neo paid">Rp {{ number_format($tmp->price, 0, ',', '.') }}</span>
                             @endif
@@ -478,18 +480,19 @@
                             <input type="hidden" name="template" value="{{ $tmp->name }}">
                             <input type="hidden" name="pose_count" value="{{ $tmp->layout_type }}">
                             <button type="submit" class="btn-select-neo btn-creator">
-                                Gunakan Karya Ini
+                                {{ __('Gunakan Karya Ini') }}
                             </button>
                         </form>
                     </div>
                 </div>
+                @endif
             @empty
                 <div class="empty-state-neo">
                     <i class="bi bi-folder-x" style="font-size: 4rem; color: var(--dark); margin-bottom: 15px; display:block;"></i>
-                    <h3 style="font-family: 'Uncut Sans', sans-serif; font-weight: 800; text-transform: uppercase;">Belum Ada Karya</h3>
-                    <p style="font-weight: 600; color: #555; margin-bottom: 20px;">Komunitas masih menunggu karya terbaikmu. Jadilah yang pertama mengunggah template di sini!</p>
+                    <h3 style="font-family: 'Uncut Sans', sans-serif; font-weight: 800; text-transform: uppercase;">{{ __('Belum Ada Karya') }}</h3>
+                    <p style="font-weight: 600; color: #555; margin-bottom: 20px;">{{ __('Komunitas masih menunggu karya terbaikmu. Jadilah yang pertama mengunggah template di sini!') }}</p>
                     <a href="{{ route('creator') }}" class="btn-select-neo btn-official" style="display: inline-flex; width: auto; padding: 12px 30px;">
-                        Unggah Karya Sekarang <i class="bi bi-rocket-takeoff-fill ms-2"></i>
+                        {{ __('Unggah Karya Sekarang') }} <i class="bi bi-rocket-takeoff-fill ms-2"></i>
                     </a>
                 </div>
             @endforelse

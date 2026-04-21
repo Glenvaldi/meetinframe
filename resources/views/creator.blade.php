@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Creator Studio - MeetinFrame')
+@section('title', __('Creator Studio') . ' - MeetinFrame')
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -219,13 +219,13 @@
 
     <div class="dash-header">
         <div class="dash-title">
-            <h2>Creator Studio</h2>
-            <p>Selamat datang kembali, {{ Auth::user()->name }}! 👋</p>
+            <h2>{{ __('Creator Studio') }}</h2>
+            <p>{{ __('Selamat datang kembali, ') }}{{ Auth::user()->name }}! 👋</p>
         </div>
         <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
             @csrf
             <button class="btn-logout-neo">
-                <i class="bi bi-box-arrow-right"></i> Keluar Akun
+                <i class="bi bi-box-arrow-right"></i> {{ __('Keluar Akun') }}
             </button>
         </form>
     </div>
@@ -246,24 +246,24 @@
                     <div class="user-email">{{ Auth::user()->email }}</div>
                     
                     @if($roleTitle == 'Newbie')
-                        <span class="badge-status badge-new">Newbie 🐣</span>
+                        <span class="badge-status badge-new">{{ __('Newbie 🐣') }}</span>
                     @else
                         <span class="badge-status badge-pro">
-                            <i class="bi bi-patch-check-fill"></i> Content Creator
+                            <i class="bi bi-patch-check-fill"></i> {{ __('Content Creator') }}
                         </span>
                     @endif
 
                     <div class="profile-divider"></div>
                     
                     <div class="join-info">
-                        <i class="bi bi-calendar2-week-fill text-danger"></i> Bergabung: {{ Auth::user()->created_at->translatedFormat('M Y') }}
+                        <i class="bi bi-calendar2-week-fill text-danger"></i> {{ __('Bergabung:') }} {{ Auth::user()->created_at->translatedFormat('M Y') }}
                     </div>
                 </div>
             </div>
 
             <div class="studio-card-neo">
                 <div class="card-header-clean">
-                    <span class="ch-title"><i class="bi bi-clock-history"></i> Riwayat Foto</span>
+                    <span class="ch-title"><i class="bi bi-clock-history"></i> {{ __('Riwayat Foto') }}</span>
                     <span class="ch-badge">{{ $histories->count() }}</span>
                 </div>
 
@@ -271,7 +271,7 @@
                     @if($histories->isEmpty())
                         <div style="text-align:center; padding:40px 0; color:var(--dark); opacity:0.6;">
                             <i class="bi bi-camera-fill" style="font-size:3rem; margin-bottom:10px; display:block;"></i>
-                            <p style="font-size:1rem; font-weight:700; text-transform:uppercase;">Belum ada sesi foto</p>
+                            <p style="font-size:1rem; font-weight:700; text-transform:uppercase;">{{ __('Belum ada sesi foto') }}</p>
                         </div>
                     @else
                         @foreach($histories as $hist)
@@ -289,13 +289,13 @@
                                 </div>
                                 <div style="display:flex; gap:8px;">
                                     @if($hist->image_path)
-                                        <a href="{{ asset('storage/' . $hist->image_path) }}" download class="btn-mini btn-mini-dl" title="Download">
+                                        <a href="{{ asset('storage/' . $hist->image_path) }}" download class="btn-mini btn-mini-dl" title="{{ __('Download') }}">
                                             <i class="bi bi-download"></i>
                                         </a>
                                     @endif
-                                    <form action="{{ route('creator.delete_history', $hist->id) }}" method="POST" onsubmit="return confirm('Hapus kenangan ini secara permanen?');" style="margin:0;">
+                                    <form action="{{ route('creator.delete_history', $hist->id) }}" method="POST" onsubmit="return confirm('{{ __('Hapus kenangan ini secara permanen?') }}');" style="margin:0;">
                                         @csrf @method('DELETE')
-                                        <button type="submit" class="btn-mini btn-mini-del" title="Hapus">
+                                        <button type="submit" class="btn-mini btn-mini-del" title="{{ __('Hapus') }}">
                                             <i class="bi bi-trash-fill"></i>
                                         </button>
                                     </form>
@@ -312,69 +312,69 @@
             <div class="stats-row">
                 <div class="stat-widget s-1">
                     <div class="stat-val">{{ $sessionCount }}</div>
-                    <div class="stat-lbl">Total Sesi</div>
+                    <div class="stat-lbl">{{ __('Total Sesi') }}</div>
                 </div>
                 <div class="stat-widget s-2">
                     <div class="stat-val">{{ $templateCount }}</div>
-                    <div class="stat-lbl">Karya Dibuat</div>
+                    <div class="stat-lbl">{{ __('Karya Dibuat') }}</div>
                 </div>
                 <div class="stat-widget s-3">
                     <div class="stat-val"><i class="bi bi-check-lg"></i></div>
-                    <div class="stat-lbl">Akun Aktif</div>
+                    <div class="stat-lbl">{{ __('Akun Aktif') }}</div>
                 </div>
             </div>
 
             <div class="content-section">
-                <h3 class="sec-title"><i class="bi bi-person-bounding-box" style="color:var(--hot-pink);"></i> Update Profil</h3>
+                <h3 class="sec-title"><i class="bi bi-person-bounding-box" style="color:var(--hot-pink);"></i> {{ __('Update Profil') }}</h3>
                 
                 <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group" style="margin-bottom:20px;">
-                        <label class="form-label">Nama Kreator</label>
+                        <label class="form-label">{{ __('Nama Kreator') }}</label>
                         <input type="text" name="name" class="form-input" value="{{ Auth::user()->name }}">
                     </div>
                     <div class="form-group" style="margin-bottom:25px;">
-                        <label class="form-label">Ganti Foto Profil</label>
+                        <label class="form-label">{{ __('Ganti Foto Profil') }}</label>
                         <div class="upload-box" id="upload-trigger-profile">
                             <i class="bi bi-cloud-arrow-up-fill ub-icon"></i>
-                            <p style="margin:0; font-size:1rem; font-weight:700; color:var(--dark);">Klik atau Drag Foto ke Sini</p>
+                            <p style="margin:0; font-size:1rem; font-weight:700; color:var(--dark);">{{ __('Klik atau Drag Foto ke Sini') }}</p>
                             <input type="file" name="profile_picture" id="profile-input" accept="image/*">
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit-neo btn-primary-color">Simpan Perubahan</button>
+                    <button type="submit" class="btn-submit-neo btn-primary-color">{{ __('Simpan Perubahan') }}</button>
                 </form>
             </div>
 
             <div class="content-section">
-                <h3 class="sec-title"><i class="bi bi-palette-fill" style="color:#00d2d3;"></i> Upload Frame Baru</h3>
+                <h3 class="sec-title"><i class="bi bi-palette-fill" style="color:#00d2d3;"></i> {{ __('Upload Frame Baru') }}</h3>
                 
                 <form action="{{ route('creator.upload') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group" style="margin-bottom:20px;">
-                        <label class="form-label">Nama Frame (Karya)</label>
-                        <input type="text" name="template_name" class="form-input" placeholder="Berikan nama yang unik...">
+                        <label class="form-label">{{ __('Nama Frame (Karya)') }}</label>
+                        <input type="text" name="template_name" class="form-input" placeholder="{{ __('Berikan nama yang unik...') }}">
                     </div>
 
                     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:20px;">
                         <div class="form-group">
-                            <label class="form-label">Layout Pose</label>
+                            <label class="form-label">{{ __('Layout Pose') }}</label>
                             <select name="layout_type" class="form-input">
-                                <option value="3">3 Pose (Strip)</option>
-                                <option value="4">4 Pose (Strip)</option>
-                                <option value="6">6 Pose (Grid)</option>
+                                <option value="3">{{ __('3 Pose (Strip)') }}</option>
+                                <option value="4">{{ __('4 Pose (Strip)') }}</option>
+                                <option value="6">{{ __('6 Pose (Grid)') }}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Harga (IDR)</label>
-                            <input type="number" name="price" class="form-input" placeholder="Isi 0 jika Gratis">
+                            <label class="form-label">{{ __('Harga (IDR)') }}</label>
+                            <input type="number" name="price" class="form-input" placeholder="{{ __('Isi 0 jika Gratis') }}">
                         </div>
                     </div>
 
                     <div class="form-group" style="margin-bottom:25px;">
-                        <label class="form-label">File Frame (Wajib PNG Transparan)</label>
+                        <label class="form-label">{{ __('File Frame (Wajib PNG Transparan)') }}</label>
                         <div class="upload-box">
                             <i class="bi bi-file-earmark-image-fill ub-icon"></i>
-                            <p style="margin:0; font-size:1rem; font-weight:700; color:var(--dark);">Pilih File PNG (Max 2MB)</p>
+                            <p style="margin:0; font-size:1rem; font-weight:700; color:var(--dark);">{{ __('Pilih File PNG (Max 2MB)') }}</p>
                             <input type="file" name="template_file" id="template-input" accept="image/png">
                         </div>
                         <img id="template-preview" src="#" style="display:none; width:100%; height:200px; object-fit:contain; margin-top:15px; border-radius:15px; background:#eee; border:4px solid var(--dark);">
@@ -389,21 +389,21 @@
                     @endif
 
                     <button type="submit" class="btn-submit-neo btn-red-color">
-                        <i class="bi bi-rocket-takeoff-fill"></i> Publish Frame Sekarang!
+                        <i class="bi bi-rocket-takeoff-fill"></i> {{ __('Publish Frame Sekarang!') }}
                     </button>
                 </form>
             </div>
 
             <div class="content-section" style="background:transparent; border:none; box-shadow:none; padding:0;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
-                    <h3 class="sec-title" style="margin:0;"><i class="bi bi-folder-fill" style="color:#f1c40f;"></i> Karya Saya</h3>
-                    <span style="background:var(--dark); padding:6px 16px; border-radius:50px; font-size:0.9rem; font-weight:800; color:#fff; border:3px solid #fff; box-shadow:0 0 0 3px var(--dark);">{{ $templates->count() }} Item</span>
+                    <h3 class="sec-title" style="margin:0;"><i class="bi bi-folder-fill" style="color:#f1c40f;"></i> {{ __('Karya Saya') }}</h3>
+                    <span style="background:var(--dark); padding:6px 16px; border-radius:50px; font-size:0.9rem; font-weight:800; color:#fff; border:3px solid #fff; box-shadow:0 0 0 3px var(--dark);">{{ $templates->count() }} {{ __('Item') }}</span>
                 </div>
 
                 <div class="grid-col">
                     @if($templates->isEmpty())
                         <div style="grid-column:1/-1; text-align:center; color:var(--dark); padding:50px; background:#fff; border-radius:24px; border:4px dashed var(--dark);">
-                            <p style="font-size:1.2rem; font-weight:800; margin:0; text-transform:uppercase;">Belum ada karya nih.</p>
+                            <p style="font-size:1.2rem; font-weight:800; margin:0; text-transform:uppercase;">{{ __('Belum ada karya nih.') }}</p>
                         </div>
                     @else
                         @foreach($templates as $tmp)
@@ -414,8 +414,8 @@
                                 <div class="col-meta">
                                     <div class="col-name" title="{{ $tmp->name }}">{{ $tmp->name }}</div>
                                     <div>
-                                        <span class="col-badge" style="background: #eee;">{{ $tmp->layout_type }} POSE</span>
-                                        <span class="col-badge" style="background: {{ $tmp->price == 0 ? '#00d2d3' : '#ffb8b8' }};">{{ $tmp->price == 0 ? 'FREE' : 'PAID' }}</span>
+                                        <span class="col-badge" style="background: #eee;">{{ $tmp->layout_type }} {{ __('POSE') }}</span>
+                                        <span class="col-badge" style="background: {{ $tmp->price == 0 ? '#00d2d3' : '#ffb8b8' }};">{{ $tmp->price == 0 ? __('FREE') : __('PAID') }}</span>
                                     </div>
                                 </div>
                             </div>

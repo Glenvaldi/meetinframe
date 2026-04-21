@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Lobby Foto Couple - MeetinFrame')
+@section('title', __('Lobby Foto Couple') . ' - MeetinFrame')
 
 @section('head_extra')
 <style>
@@ -197,9 +197,9 @@
 <div class="lobby-container">
 
     <div class="page-header-neo">
-        <span class="page-badge-neo">🌐 Multipemain</span>
-        <h1 class="page-title-neo">Sesi Foto Jarak Jauh</h1>
-        <p class="page-desc-neo">Ajak rekan, sahabat, atau pasangan Anda untuk berfoto dalam satu bingkai dari lokasi yang berbeda secara real-time!</p>
+        <span class="page-badge-neo">{{ __('🌐 Multipemain') }}</span>
+        <h1 class="page-title-neo">{{ __('Sesi Foto Jarak Jauh') }}</h1>
+        <p class="page-desc-neo">{{ __('Ajak rekan, sahabat, atau pasangan Anda untuk berfoto dalam satu bingkai dari lokasi yang berbeda secara real-time!') }}</p>
     </div>
 
     @if(session('error'))
@@ -215,46 +215,46 @@
             <div class="card-icon-neo icon-create">
                 <i class="bi bi-house-add-fill"></i>
             </div>
-            <h2 class="card-title-neo">Buat Ruangan Baru</h2>
-            <p class="card-desc-neo">Pilih jumlah pose dan bagikan kode ruangan yang terbentuk kepada rekan atau pasangan Anda.</p>
+            <h2 class="card-title-neo">{{ __('Buat Ruangan Baru') }}</h2>
+            <p class="card-desc-neo">{{ __('Pilih jumlah pose dan bagikan kode ruangan yang terbentuk kepada rekan atau pasangan Anda.') }}</p>
 
             <form action="{{ route('couple.create') }}" method="POST" style="display: flex; flex-direction: column; flex-grow: 1;">
                 @csrf
                 <div class="pose-selection">
                     <input type="radio" id="pose2" name="pose_count" value="2" class="pose-radio" required>
-                    <label for="pose2" class="pose-label">2 Pose</label>
+                    <label for="pose2" class="pose-label">{{ __('2 Pose') }}</label>
 
                     <input type="radio" id="pose3" name="pose_count" value="3" class="pose-radio" checked>
-                    <label for="pose3" class="pose-label">3 Pose</label>
+                    <label for="pose3" class="pose-label">{{ __('3 Pose') }}</label>
 
                     <input type="radio" id="pose4" name="pose_count" value="4" class="pose-radio">
-                    <label for="pose4" class="pose-label">4 Pose</label>
+                    <label for="pose4" class="pose-label">{{ __('4 Pose') }}</label>
 
                     <input type="radio" id="pose6" name="pose_count" value="6" class="pose-radio">
-                    <label for="pose6" class="pose-label">6 Pose</label>
+                    <label for="pose6" class="pose-label">{{ __('6 Pose') }}</label>
                 </div>
 
                 <button type="submit" class="btn-action-neo btn-create-neo">
-                    Buat Ruangan <i class="bi bi-arrow-right-circle-fill"></i>
+                    {{ __('Buat Ruangan') }} <i class="bi bi-arrow-right-circle-fill"></i>
                 </button>
             </form>
         </div>
 
-        <div class="divider-mobile-neo">ATAU</div>
+        <div class="divider-mobile-neo">{{ __('ATAU') }}</div>
 
         <div class="lobby-card-neo card-join">
             <div class="card-icon-neo icon-join">
                 <i class="bi bi-box-arrow-in-right"></i>
             </div>
-            <h2 class="card-title-neo">Bergabung ke Ruangan</h2>
-            <p class="card-desc-neo">Sudah menerima kode ruangan dari rekan Anda? Masukkan kodenya di bawah ini untuk segera bergabung.</p>
+            <h2 class="card-title-neo">{{ __('Bergabung ke Ruangan') }}</h2>
+            <p class="card-desc-neo">{{ __('Sudah menerima kode ruangan dari rekan Anda? Masukkan kodenya di bawah ini untuk segera bergabung.') }}</p>
 
             <form action="{{ route('couple.join') }}" method="POST" style="display: flex; flex-direction: column; flex-grow: 1;">
                 @csrf
                 <input type="text" name="room_code" class="input-code-neo" placeholder="KODE6X" maxlength="6" required autocomplete="off">
 
                 <button type="submit" class="btn-action-neo btn-join-neo">
-                    Bergabung Sekarang <i class="bi bi-people-fill"></i>
+                    {{ __('Bergabung Sekarang') }} <i class="bi bi-people-fill"></i>
                 </button>
             </form>
         </div>

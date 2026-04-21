@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $creator->name . ' - Profil')
+@section('title', $creator->name . ' - ' . __('Profil'))
 
 @section('head_extra')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -102,17 +102,17 @@
         
         <div class="ph-info-neo">
             <div class="ph-name-neo">{{ $creator->name }}</div>
-            <span class="ph-badge-neo"><i class="bi bi-patch-check-fill"></i> Content Creator</span>
+            <span class="ph-badge-neo"><i class="bi bi-patch-check-fill"></i> {{ __('Content Creator') }}</span>
             
             <br>
             <div class="ph-meta-neo">
-                Bergabung: {{ $creator->created_at->translatedFormat('F Y') }} • 
-                <strong>{{ $creator->templates->count() }}</strong> Karya
+                {{ __('Bergabung:') }} {{ $creator->created_at->translatedFormat('F Y') }} • 
+                <strong>{{ $creator->templates->count() }}</strong> {{ __('Karya') }}
             </div>
         </div>
     </div>
 
-    <h3 class="section-title-neo"><i class="bi bi-grid-fill" style="color: var(--hot-pink);"></i> Koleksi Template</h3>
+    <h3 class="section-title-neo"><i class="bi bi-grid-fill" style="color: var(--hot-pink);"></i> {{ __('Koleksi Template') }}</h3>
     
     <div class="template-grid-neo">
         @forelse($creator->templates as $tmp)
@@ -125,9 +125,9 @@
                     <div class="t-title-neo" title="{{ $tmp->name }}">{{ $tmp->name }}</div>
                     
                     <div class="t-meta-neo">
-                        <span><i class="bi bi-camera"></i> {{ $tmp->layout_type }} Pose</span>
+                        <span><i class="bi bi-camera"></i> {{ $tmp->layout_type }} {{ __('Pose') }}</span>
                         @if($tmp->price == 0)
-                            <span class="t-price-badge free">Gratis</span>
+                            <span class="t-price-badge free">{{ __('Gratis') }}</span>
                         @else
                             <span class="t-price-badge">Rp {{ number_format($tmp->price, 0, ',', '.') }}</span>
                         @endif
@@ -138,7 +138,7 @@
                         <input type="hidden" name="template" value="{{ $tmp->name }}">
                         <input type="hidden" name="pose_count" value="{{ $tmp->layout_type }}">
                         <button type="submit" class="btn-use-template-neo">
-                            Gunakan Karya Ini <i class="bi bi-rocket-takeoff ms-1"></i>
+                            {{ __('Gunakan Karya Ini') }} <i class="bi bi-rocket-takeoff ms-1"></i>
                         </button>
                     </form>
                 </div>
@@ -146,8 +146,8 @@
         @empty
             <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 20px; border: 4px dashed var(--dark); box-shadow: 8px 8px 0px var(--dark);">
                 <i class="bi bi-folder-x" style="font-size: 4rem; color: var(--dark); margin-bottom: 15px; display: block;"></i>
-                <h3 style="font-family: 'Uncut Sans', sans-serif; font-weight: 800; text-transform: uppercase;">Belum Ada Karya</h3>
-                <p style="font-weight: 600; color: #555;">Kreator ini belum mempublikasikan karya apa pun.</p>
+                <h3 style="font-family: 'Uncut Sans', sans-serif; font-weight: 800; text-transform: uppercase;">{{ __('Belum Ada Karya') }}</h3>
+                <p style="font-weight: 600; color: #555;">{{ __('Kreator ini belum mempublikasikan karya apa pun.') }}</p>
             </div>
         @endforelse
     </div>
